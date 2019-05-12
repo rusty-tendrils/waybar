@@ -1,0 +1,152 @@
+{
+    "layer": "bottom", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/media", "network"],
+  "modules-center": [
+    "custom/left-arrow-dark-1",
+    "clock#1",
+    "custom/left-arrow-light",
+    "custom/left-arrow-dark-2",
+    "clock#2",
+    "custom/right-arrow-dark-1",
+    "custom/right-arrow-light",
+    "clock#3",
+    "custom/right-arrow-dark-2"
+  ],
+    "modules-right": ["pulseaudio", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "tray"],
+    // Modules configuration
+//     "sway/workspaces": {
+//         "disable-scroll": true,
+//         "all-outputs": true,
+//         "format": "{name}: {icon}",
+//         "format-icons": {
+//             "1": "",
+//             "2": "",
+//             "3": "",
+//             "4": "",
+//             "5": "",
+//             "urgent": "",
+//             "focused": "",
+//             "default": ""
+//         }
+//     },
+  "sway/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+          "1": "一", 
+          "2": "二", 
+          "3": "三", 
+          "4": "四", 
+          "5": "五", 
+          "6": "六", 
+          "7": "七", 
+          "8": "八", 
+          "9": "九", 
+          "10": "十"
+      } 
+  },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+  "clock#1": {
+    "format": "{:%a}"
+  },
+  "clock#2": {
+    "format": "{:%H:%M}"
+  },
+  "clock#3": {
+    "format": "{:%m-%d}"
+  },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+  "custom/left-arrow-dark-1": {
+    "format": ""
+  },
+  "custom/left-arrow-dark-2": {
+    "format": ""
+  },
+  "custom/left-arrow-light": {
+    "format": ""
+  },
+  "custom/right-arrow-dark-1": {
+    "format": ""
+  },
+  "custom/right-arrow-dark-2": {
+    "format": ""
+  },
+  "custom/right-arrow-light": {
+    "format": ""
+  },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠"
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    }
+}
+
