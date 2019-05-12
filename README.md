@@ -1,4 +1,1 @@
-# waybar
-dotfiles for my waybar
-<h1>hey</h1>
-sfdfkjd
+<h1>my waybar dotfiles</h1>
